@@ -1,0 +1,16 @@
+﻿@page
+@model Zajęcia_3___FizzBuzz.Pages.Ostatnio_SzukaneModel
+@{
+    ViewData["Title"] = "Ostatnie Szukane";
+}
+<h1>Ostatnio Szukane:</h1>
+@{
+    if (Model.NumbersList != null)
+    {
+        @for (int i = Model.NumbersList.Count - 1; i >= 0; i--)
+        {
+            <p>Wynik: @Model.NumbersList[i].Message Liczba: @Model.NumbersList[i].Number Data: @Model.NumbersList[i].Date</p>
+        }
+
+    }
+}
