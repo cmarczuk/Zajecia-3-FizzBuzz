@@ -1,16 +1,23 @@
 ﻿@page
-@model Zajęcia_3___FizzBuzz.Pages.Ostatnio_SzukaneModel
+@model Zajęcia_4___DBFizzBuzz.Pages.Ostatnio_SzukaneModel
 @{
-    ViewData["Title"] = "Ostatnie Szukane";
 }
-<h1>Ostatnio Szukane:</h1>
-@{
-    if (Model.NumbersList != null)
-    {
-        @for (int i = Model.NumbersList.Count - 1; i >= 0; i--)
-        {
-            <p>Wynik: @Model.NumbersList[i].Message Liczba: @Model.NumbersList[i].Number Data: @Model.NumbersList[i].Date</p>
-        }
-
-    }
-}
+<div class="col-12">
+    <h1>Ostatnio Szukane:</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr><th>Liczba</th><th>Komunikat</th><th colspan="2">Data</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Numbers)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Number)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    <td><a asp-page="./Delete" asp-route-id="@item.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,31 @@
+﻿@page
+@model Zajęcia_3___FizzBuzz.Pages.Zapisanewsesji
+@{
+    ViewData["Title"] = "Ostatnie Szukane";
+}
+<h1>Zapisane w sesji:</h1>
+@{
+    if (Model.NumbersList != null)
+    {
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Liczba</th>
+                    <th>Komunikat</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = Model.NumbersList.Count - 1; i >= 0; i--)
+                {
+                    <tr>
+                        <td>@Model.NumbersList[i].Number</td>
+                        <td>@Model.NumbersList[i].Message</td>
+                        <td>@Model.NumbersList[i].Date</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+}

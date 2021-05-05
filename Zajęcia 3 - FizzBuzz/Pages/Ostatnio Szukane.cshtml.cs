@@ -7,20 +7,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Zajęcia_3___FizzBuzz.Forms;
+using Zajęcia_3___FizzBuzz.Data;
+using Microsoft.Extensions.Logging;
 
-namespace Zajęcia_3___FizzBuzz.Pages
+namespace Zajęcia_4___DBFizzBuzz.Pages
 {
     public class Ostatnio_SzukaneModel : PageModel
     {
-        public List<Numbers> NumbersList;
+        private readonly NumbersContext _context;
+        public IList<Numbers> Numbers { get; set; }
+
+        public Ostatnio_SzukaneModel(NumbersContext context)
+        {
+            _context = context;
+        }
 
         public void OnGet()
         {
-            var SessionNumberListJSON = HttpContext.Session.GetString("SessionNumberList");
-            if (SessionNumberListJSON != null)
-            {
-                NumbersList = JsonConvert.DeserializeObject<List<Numbers>>(SessionNumberListJSON);
-            }
+            var NumbersQuery = (from Numbers in
+                    _context.Numbers
+                                orderby Numbers.Date descending
+                                select Numbers).Take(10);
+            Numbers = NumbersQuery.ToList();
         }
     }
 }
