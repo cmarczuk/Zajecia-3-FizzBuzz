@@ -59,7 +59,9 @@ namespace Zajęcia_3___FizzBuzz
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
