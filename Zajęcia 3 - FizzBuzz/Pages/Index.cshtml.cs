@@ -69,6 +69,10 @@ namespace Zajęcia_3___FizzBuzz.Pages
                 NumbersList = CheckList();
                 Numbers.Message = FizzBuzz(Numbers.Number);
                 Numbers.Date = DateTime.Now;
+                if (User.Identity.IsAuthenticated)
+                {
+                    Numbers.Creator = User.Identity.Name.ToString();
+                }
                 NumbersList.Add(Numbers);
                 _context.Numbers.Add(Numbers);
                 _context.SaveChanges();

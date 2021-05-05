@@ -9,9 +9,11 @@ using Newtonsoft.Json;
 using Zajęcia_3___FizzBuzz.Forms;
 using Zajęcia_3___FizzBuzz.Data;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Zajęcia_4___DBFizzBuzz.Pages
 {
+    [Authorize]
     public class Ostatnio_SzukaneModel : PageModel
     {
         private readonly NumbersContext _context;
@@ -27,7 +29,7 @@ namespace Zajęcia_4___DBFizzBuzz.Pages
             var NumbersQuery = (from Numbers in
                     _context.Numbers
                                 orderby Numbers.Date descending
-                                select Numbers).Take(10);
+                                select Numbers).Take(20);
             Numbers = NumbersQuery.ToList();
         }
     }

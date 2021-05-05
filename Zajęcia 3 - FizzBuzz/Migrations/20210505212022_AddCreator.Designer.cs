@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zajęcia_3___FizzBuzz.Data;
 
 namespace Zajęcia_3___FizzBuzz.Migrations
 {
     [DbContext(typeof(NumbersContext))]
-    partial class NumbersContextModelSnapshot : ModelSnapshot
+    [Migration("20210505212022_AddCreator")]
+    partial class AddCreator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

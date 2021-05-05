@@ -15,7 +15,14 @@
                     <td>@Html.DisplayFor(modelItem => item.Number)</td>
                     <td>@Html.DisplayFor(modelItem => item.Message)</td>
                     <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                    <td><a asp-page="./Delete" asp-route-id="@item.Id">Delete</a></td>
+                    @if (item.Creator == User.Identity.Name)
+                    {
+                        <td><a asp-page="./Delete" asp-route-id="@item.Id">Delete</a></td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
                 </tr>
             }
         </tbody>

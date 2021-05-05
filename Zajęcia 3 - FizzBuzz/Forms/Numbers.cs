@@ -21,5 +21,8 @@ namespace Zajęcia_3___FizzBuzz.Forms
 
         [Column(TypeName = "varchar(50)"), MaxLength(50)]
         public string Message { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string Creator { get; set; }
     }
 }
